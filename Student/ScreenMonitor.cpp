@@ -1,16 +1,6 @@
 #include "stdafx.h"
 #include "ScreenMonitor.h"
 #include <math.h>
-//////////////////////////////////////////////////////////////////////////
-// zlib库 需要使用其中的压缩图片功能
-#include "zlib.h"
-#include "zconf.h"
-#pragma comment(lib,"zdll.lib")
-//////////////////////////////////////////////////////////////////////////
-#include <afxwin.h>
-#include <io.h>
-#include <fcntl.h>
-
 /*
 //把下面的函数加到你初始化的地方，然后你就可以使用printf函数了
 void InitConsoleWindow()
@@ -30,15 +20,7 @@ CScreenMonitor::CScreenMonitor()
 	: m_pBmpTransData(NULL)
 	, m_pBMPINFO(NULL)
 	, m_isSendFlag(true)
-	, m_isInitBITMAPINFO(true)
-//	, m_socketScreen(INVALID_SOCKET)
-//	, m_isSocketConn(true)
-// 	, m_pBmpOriDataFirst(NULL)
-// 	, m_pBmpOriDataSecond(NULL)
-// 	, m_heightPerBlock(0)
-// 	, m_heightLastBlock(0)
-// 	, m_widthPerBlock(0)
-// 	, m_sizePerBlcok(0)
+//	, m_isInitBITMAPINFO(true)
 {
 }
 
