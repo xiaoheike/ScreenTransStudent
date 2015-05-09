@@ -8,9 +8,7 @@
 //////////////////////////////////////////////////////////////////////////
 #include <afxwin.h>
 #include "Comment.h"
-//#include <iostream>
 #include "SocketCenter.h"
-using namespace std;
 class CScreenMonitor
 {
 public:
@@ -20,28 +18,43 @@ public:
 
 	void GetDeskScreeData();
 
+	void DeletepBmpOriginData(BYTE* pBmpOriginalData);
+
+	void GetDeskScreenDC(CDC &memDC, CBitmap &bmp, BITMAP &bitmap);
+
+	void SetCursorIcon(CDC &memDC);
+
 	void InitBITMAPINFO(BITMAP &bitmap, int height, int width);
 
 	void CompressBmpData(BYTE* pBmpOriginalData);
 
-	void SendBmpData();
+	void SendScreenBmpData();
+
+	void SetBmpData(BMPDATA &bmpData, int i, int count);
+
+	int InitBmpData(BMPDATA &bmpData);
 
 	void SendScreenData();
 
-	void SetSocket(SOCKET socketMsg);
+	void SetSocketMsg(SOCKET socketMsg);
 
-	void SetSendFlag(bool isSendFlag);
+	void SetIsScreenMonitorEnd(bool isSendFlag);
 
 	void CleanData();
+
+	void DeletepBmpTransData();
+
+	void DeletepBitMapInfo();
+
 private:
 	int m_bmpHeadTotalSize;
-	BITMAPINFO* m_pBMPINFO;
+	// 图像的头信息
+	BITMAPINFO* m_pBitMapInfo;
 	uLongf m_imgTotalSize;
 	BYTE* m_pBmpTransData;
-	CSocketCenter m_pSocketCenter;
-	bool m_isSendFlag;
+	CSocketCenter m_socketCenter;
+	bool m_isScreenMonitorEnd;
 	SOCKET m_socketMsg;
 	uLongf  m_compressBmpDataLen;
-//	bool m_isInitBITMAPINFO;
 };
 

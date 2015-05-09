@@ -303,8 +303,8 @@ void CControlCenter::BeginScreenMonitor()
 {
 	DeletepScreenMonitor();
 	m_pScreenMonitor = new CScreenMonitor();
-	m_pScreenMonitor->SetSocket(m_socketMsg);
-	m_pScreenMonitor->SetSendFlag(true);
+	m_pScreenMonitor->SetSocketMsg(m_socketMsg);
+	m_pScreenMonitor->SetIsScreenMonitorEnd(true);
 	m_hScreenDlg = (::CreateThread(0, 0, OnBeginScreenMonitor,
 		(LPVOID)m_pScreenMonitor, 0, NULL));
 }
@@ -334,7 +334,7 @@ Desc		: 停止发送本机的屏幕图像数据到教师机
 ******************************************************************/
 void CControlCenter::EndScreenMonitor()
 {
-	m_pScreenMonitor->SetSendFlag(false);
+	m_pScreenMonitor->SetIsScreenMonitorEnd(false);
 	DWORD exitCode = 0;
 	::GetExitCodeThread(m_hScreenDlg, &exitCode);
 	while (exitCode == STILL_ACTIVE)
@@ -343,8 +343,9 @@ void CControlCenter::EndScreenMonitor()
 		::GetExitCodeThread(m_hScreenDlg, &exitCode);
 	}
 	CloseHandle(m_hScreenDlg);
-	delete m_pScreenMonitor;
-	m_pScreenMonitor = NULL;
+	DeletepScreenMonitor();
+// 	delete m_pScreenMonitor;
+// 	m_pScreenMonitor = NULL;
 }
 
 /******************************************************************

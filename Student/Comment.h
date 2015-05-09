@@ -77,7 +77,7 @@ typedef struct tagBMPHEADINFO
 //	 int ID;
 	 unsigned long bmpCompressSize;
 	 BITMAPINFO bmpHeadInfo;
-	 BYTE transData[SCREEN_TRANS_SIZE];
+	 BYTE screenBmpData[SCREEN_TRANS_SIZE];
  }BMPDATA;
 
  typedef struct tagMULTICAST
