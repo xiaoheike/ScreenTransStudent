@@ -2,8 +2,7 @@
 FileName: ControlCenter.cpp
 Author	: xiaoheike
 Date	: 2015-05-09 10:27:18
-Desc	:
-
+Desc	: 接收来自教师机的消息并进行分配处理
 *******************************************************************/
 #include "stdafx.h"
 #include "ControlCenter.h"
