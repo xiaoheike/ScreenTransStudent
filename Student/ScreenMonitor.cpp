@@ -175,7 +175,7 @@ void CScreenMonitor::SendBmpData()
 	for (int i = 0; i < count; i++)
 	{
 		// 通知客户端可以开始接收屏幕数据了
-		m_pSocketCenter.SendReadyInfo(m_socketMsg, SCREENDATA);
+		m_pSocketCenter.SendReadyInfo(m_socketMsg, BEGINSCREENMONITOR);
 
 
 		memset(bmpData.transData, 0, SCREEN_TRANS_SIZE);
