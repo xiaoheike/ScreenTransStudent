@@ -220,8 +220,8 @@ void CControlCenter::BeginMulticast()
 {
 	DeletepMulticastDlg();
 	m_pMulticastDlg = new CMulticastDlg();
-	m_pMulticastDlg->SetMulticastSocket(m_socketMulticast);
-	m_pMulticastDlg->SetIsStop(false);
+	m_pMulticastDlg->SetSocketMulticast(m_socketMulticast);
+	m_pMulticastDlg->SetIsMulticastStop(false);
 	CloseHandle(::CreateThread(0, 0, OnShowMulticastDlg, (LPVOID)m_pMulticastDlg, 0, NULL));
 	m_hMulticast = ::CreateThread(0, 0, OnBeginMulticast,
 		(LPVOID)m_pMulticastDlg, 0, NULL);
@@ -271,10 +271,10 @@ to-do       : 线程会上面SOCKET 的RecvFrom 上而导致线程无法结束
 ******************************************************************/
 void CControlCenter::EndMulticast()
 {
-	m_pMulticastDlg->SetIsStop(true);
+	m_pMulticastDlg->SetIsMulticastStop(true);
 	DWORD exitCode = 0;
 	// 关闭模态对话框
-	m_pMulticastDlg->CloseDlg();
+	m_pMulticastDlg->CloseModalDlg();
 
 	GetExitCodeThread(m_hMulticast, &exitCode);
 	while (STILL_ACTIVE == exitCode)
