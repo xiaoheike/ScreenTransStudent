@@ -6,7 +6,5 @@ public:
 	CStuInfo();
 	~CStuInfo();
 	void SendStuInfo(SOCKET socket, STUINFODATA& stuInfo);
-private:
-//	CSocketCenter m_socketCenter;
 };
 

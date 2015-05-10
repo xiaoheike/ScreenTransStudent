@@ -1,12 +1,19 @@
+/******************************************************************* 
+FileName: ScreenMonitor.cpp
+Author	: xiaoheike
+Date	: 2015-05-10 14:43:29
+Desc	: 屏幕监控类，实现屏幕监控相关方法，包括屏幕图像数据的传输
+		  获取等
+*******************************************************************/ 
 #include "stdafx.h"
 #include "ScreenMonitor.h"
 #include <math.h>
 
 CScreenMonitor::CScreenMonitor()
-: m_pBmpTransData(NULL)
-, m_pBitMapInfo(NULL)
-, m_isScreenMonitorEnd(true)
-, m_compressBmpDataLen(0)
+	: m_pBmpTransData(NULL)
+	, m_pBitMapInfo(NULL)
+	, m_isScreenMonitorEnd(true)
+	, m_compressBmpDataLen(0)
 {
 }
 
