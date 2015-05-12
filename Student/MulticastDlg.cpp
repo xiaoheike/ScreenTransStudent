@@ -110,7 +110,7 @@ void CMulticastDlg::SetScreenData()
 		}
 		ShowBmp(multicastData);
 	}
-	CleanData();
+//	CleanData();
 }
 
 /******************************************************************
