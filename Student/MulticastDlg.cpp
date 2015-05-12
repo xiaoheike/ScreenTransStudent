@@ -19,10 +19,10 @@ CMulticastDlg::CMulticastDlg(CWnd* pParent/* = NULL*/)
 }
 
 CMulticastDlg::CMulticastDlg(sockaddr_in addr, SOCKET socketMulticast, CWnd* pParent)
-: CDialogEx(CMulticastDlg::IDD, pParent)
-, m_socketMulticast(socketMulticast)
-, m_isMulticastStop(false)
-, m_pBmpTransData(NULL)
+	: CDialogEx(CMulticastDlg::IDD, pParent)
+	, m_socketMulticast(socketMulticast)
+	, m_isMulticastStop(false)
+	, m_pBmpTransData(NULL)
 {
 	// 	// 检测是否有内存泄露
 	// 	_CrtDumpMemoryLeaks();
@@ -249,6 +249,23 @@ void CMulticastDlg::DeletepBmpTransData()
 	{
 		delete[] m_pBmpTransData;
 		m_pBmpTransData = NULL;
+	}
+}
+
+/******************************************************************
+Function	: DeleteSocketMulticast
+Date		: 2015-05-09 16:53:34
+Author		: xiaoheike
+Parameter	: 无
+Return		: void
+Desc		: 关闭SOCKET 连接
+******************************************************************/
+void CMulticastDlg::DeleteSocketMulticast()
+{
+	if (m_socketMulticast != INVALID_SOCKET)
+	{
+		closesocket(m_socketMulticast);
+		m_socketMulticast = INVALID_SOCKET;
 	}
 }
 

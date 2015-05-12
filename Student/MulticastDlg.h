@@ -30,9 +30,6 @@ private:
 	BITMAPINFO* m_pBitMapInfo;
 	BYTE* m_pBmpTransData;
 	CRect m_rectClient;
-//	SOCKET m_socketMsg;
-//	sockaddr_in m_addr;
-	//CSocketCenter m_
 public:
 	void SetScreenData();
 
@@ -41,24 +38,36 @@ public:
 	void SetBmpTransDataNotLast(MULTICASTDATA &multicastData, int& id);
 
 	void SetBmpTransDataLast(MULTICASTDATA &multicastData, int& id);
+
 	void DeletepBitMapInfo();
 
 	void DeletepBmpTransData();
 
+	void DeleteSocketMulticast();
+
 	BYTE* UnCompressData(uLongf biSizeImage, unsigned long bmpCompressSize);
+
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	void CleanData();
+
 	virtual BOOL OnInitDialog();
+
 	afx_msg void OnClose();
+
 	static DWORD WINAPI OnSetScreenData();
+
 	static DWORD WINAPI OnSetScreenData(LPVOID self);
+
 	void SetIsMulticastStop(bool isStop);
+
 	void SetSocketMulticast(SOCKET multicastSocket);
+
 	void CloseModalDlg();
+
 	afx_msg void OnNcDestroy();
+
+	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 private:
 	CSocketCenter m_socketCenter;
-//	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	public:
-		afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
+
 };

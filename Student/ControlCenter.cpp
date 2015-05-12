@@ -66,7 +66,7 @@ void CControlCenter::DeleteSocketMulticast()
 	if (m_socketMulticast != INVALID_SOCKET)
 	{
 		closesocket(m_socketMulticast);
-		m_socketMulticast = NULL;
+		m_socketMulticast = INVALID_SOCKET;
 	}
 }
 
