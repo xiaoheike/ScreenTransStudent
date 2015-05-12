@@ -53,7 +53,7 @@ private:
 	uLongf m_imgTotalSize;
 	BYTE* m_pBmpTransData;
 	CSocketCenter m_socketCenter;
-	bool m_isScreenMonitorEnd;
+//	bool m_isScreenMonitorEnd;
 	SOCKET m_socketMsg;
 	uLongf  m_compressBmpDataLen;
 };
