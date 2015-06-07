@@ -9,17 +9,17 @@
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 // visual Leak dealtector 内存泄露需要添加的头文件 
-#include <vld.h>
+//#include <vld.h>
 //////////////////////////////////////////////////////////////////////////
 
 
 #define SCREEN_TRANS_SIZE (20*1024)
 #define MULTICAST_TRANS_SIZE (50*1024)
 //#define FILE_TRANS_SIZE 512 
-//#define CONNECT_IP "127.0.0.1"
-#define CONNECT_IP "192.168.1.104"
+#define CONNECT_IP "127.0.0.1"
+//efine CONNECT_IP "192.168.1.104"
 #define CONNECT_PORT 8000
-//#define CONNECT_IP "192.168.1.19"
+//#define CONNECT_IP "192.168.1.30"
 #define MULTICAST_IP "224.0.0.210"
 #define MULTICAST_TRANS_PORT 8030
 #define SCREEN_TRANS_PORT 8010

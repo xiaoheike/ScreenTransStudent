@@ -307,6 +307,7 @@ BOOL CMulticastDlg::OnInitDialog()
 
 	// TODO:  在此添加额外的初始化
 	// 让模态对话框最大化显示
+	//ShowWindow(SW_MAXIMIZE);
 	ShowWindow(SW_NORMAL);
 	// 使对话框的关闭按钮无效
 	CMenu *pSysMenu = GetSystemMenu(FALSE);
