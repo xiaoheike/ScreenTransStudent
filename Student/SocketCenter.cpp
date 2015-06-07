@@ -13,14 +13,15 @@ CSocketCenter::~CSocketCenter()
 //	WSACleanup();
 }
 
-/*
-	初始化SOCKET 并连接服务器
-	input:
-		IP--连接的IP地址
-		port--连接的端口号
-	output:
-		socketConnect--连接服务器成功的套接字
-*/
+/******************************************************************
+Function	: InitSocket
+Date		: 2015-06-07 15:07:41
+Author		: xiaoheike
+Parameter	: 		IP--连接的IP地址
+port--连接的端口号
+Return		: socketConnect--连接教师机成功的套接字
+Desc		: 初始化SOCKET 并连接服务器
+******************************************************************/
 SOCKET CSocketCenter::InitSocket(char* IP, int port)
 {
 	WSADATA wasData;
@@ -65,15 +66,16 @@ SOCKET CSocketCenter::InitSocket(char* IP, int port)
 	}
 }
 
-/*
-	将数据发送到教师机
-	input:
-		socket--经过初始化的SOCKET对象
-		sendBuf--需要发送的数据信息数组
-		sendBytes--需要发送的数据的大小
-	output:
-		int--发送成功的数据字节数
-*/
+/******************************************************************
+Function	: SendDataTCP
+Date		: 2015-06-07 15:07:14
+Author		: xiaoheike
+Parameter	: 		socket--经过初始化的SOCKET对象
+sendBuf--需要发送的数据信息数组
+sendBytes--需要发送的数据的大小
+Return		: int--发送成功的数据字节数
+Desc		: 将数据发送到教师机
+******************************************************************/
 int CSocketCenter::SendDataTCP(SOCKET socket, const char* sendBuf, int sendBytes)
 {
 	const char *pNeedToSend = sendBuf;
@@ -103,14 +105,16 @@ int CSocketCenter::SendDataTCP(SOCKET socket, const char* sendBuf, int sendBytes
 	return pNeedToSend - sendBuf;
 }
 
-/*
-	接收教师机的数据
-	input:
-		socket--经过初始化的SOCKET对象
-		getBuf--从客户端接收的数据的保存数组
-		sendBytes--从客户端接收的数据的大小
-	output:
-*/
+/******************************************************************
+Function	: RecvDataTCP
+Date		: 2015-06-07 15:06:39
+Author		: xiaoheike
+Parameter	: 		socket--经过初始化的SOCKET对象
+getBuf--从客户端接收的数据的保存数组
+sendBytes--从客户端接收的数据的大小
+Return		: int--接收成功的字节数
+Desc		: 接收教师机的数据
+******************************************************************/
 int CSocketCenter::RecvDataTCP(SOCKET socket, char* getBuf, int recvBytes)
 {
 	char *pNeedToRecv = (char*)getBuf;
@@ -144,9 +148,15 @@ int CSocketCenter::RecvDataTCP(SOCKET socket, char* getBuf, int recvBytes)
 	return pNeedToRecv - getBuf;
 }
 
-/*
-	服务商已经收到请求，客户端可以开始接收请求的消息
-*/
+/******************************************************************
+Function	: SendReadyInfo
+Date		: 2015-06-07 15:05:22
+Author		: xiaoheike
+Parameter	: socket--与教师机相连的socket
+msgID--需要发送给教师机的消息
+Return		: void
+Desc		: 将消息发送到教师机
+******************************************************************/
 void CSocketCenter::SendReadyInfo(SOCKET socket, int msgID)
 {
 	MSGTYPE msgType;
@@ -155,6 +165,15 @@ void CSocketCenter::SendReadyInfo(SOCKET socket, int msgID)
 	SendDataTCP(socket, (char*)&msgType, sizeof(MSGTYPE));
 }
 
+/******************************************************************
+Function	: InitMulticastSocket
+Date		: 2015-06-07 15:03:23
+Author		: xiaoheike
+Parameter	: port--连接教师机的端口
+multicastIp--连接教师机的IP地址
+Return		: SOCKET--初始化后的SOCKET
+Desc		: 初始化UDP连接（IP组播技术）的相关信息
+******************************************************************/
 SOCKET CSocketCenter::InitMulticastSocket(int port, char* multicastIp)
 {
 	WSAData wsaData;
@@ -212,15 +231,16 @@ SOCKET CSocketCenter::InitMulticastSocket(int port, char* multicastIp)
 }
 
 
-/*
-	接收来自教师机的数据
-	input:
-		socket--经过初始化的SOCKET对象
-		getBuf--从客户端接收的数据的保存数组
-		sendBytes--从客户端接收的数据的大小
-	output:
-		int--发送成功的数据字节数
-*/
+/******************************************************************
+Function	: RecvDataUDP
+Date		: 2015-06-07 15:02:52
+Author		: xiaoheike
+Parameter	: 		socket--经过初始化的SOCKET对象
+getBuf--从客户端接收的数据的保存数组
+sendBytes--从客户端接收的数据的大小
+Return		: int--发送成功的数据字节数
+Desc		: 接收来自教师机的数据
+******************************************************************/
 int CSocketCenter::RecvDataUDP(SOCKET socket, char* getBuf, int recvBytes)
 {
 	sockaddr_in addr;
